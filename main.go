@@ -18,11 +18,12 @@ func main() {
 		{ID: 7, Nama: "Aries", Alamat: "Bekasi", Pekerjaan: "Karyawan Swasta", Alasan: "Karena Go merupakan bahasa pemrograman yang mudah dipelajari"},
 	}
 
+	getByName := models.SearchData(dataSiswa)
 	if len(os.Args) != 2 {
 		fmt.Println("Masukkan Hanya 1 Parameter")
 		return
 	}
-	result := models.SearchData(dataSiswa, os.Args[1])
+	result := getByName(os.Args[1])
 	if result.ID == 0 {
 		fmt.Println("Data Tidak Ada")
 		return

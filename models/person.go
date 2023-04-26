@@ -12,11 +12,13 @@ type Siswa struct {
 	Alasan    string
 }
 
-func SearchData(dataSiswa []Siswa, nama string) Siswa {
-	for _, v := range dataSiswa {
-		if strings.EqualFold(v.Nama, nama) {
-			return v
+func SearchData(dataSiswa []Siswa) func(string) Siswa {
+	return func(nama string) Siswa {
+		for _, v := range dataSiswa {
+			if strings.EqualFold(v.Nama, nama) {
+				return v
+			}
 		}
+		return Siswa{}
 	}
-	return Siswa{}
 }
